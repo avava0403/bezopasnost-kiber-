@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новогодние Лабораторные</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <header>
+        <h1 class="garland">С наступающим новым годом, Алексей Сергеевич!</h1>
+    </header>
+
+    <nav class="tabs">
+        <button class="tab-button" data-tab="caesar">Шифр Цезаря</button>
+        <button class="tab-button" data-tab="vigenere">Шифр Виженера</button>
+        <button class="tab-button" data-tab="lab3">Шифр ГОСТ 28147-89</button>
+        <button class="tab-button" data-tab="lab4">RSA</button>
+        <button class="tab-button active" data-tab="lab5">ГОСТ Потоковый</button>
+    </nav>
+
+    <main>
+        <div id="caesar" class="tab-content">
+            <div class="lab-container">
+                <div class="controls">
+                    <h2>Шифр Цезаря</h2>
+                    <textarea id="caesar-input" placeholder="Введите НА РУССКОМ текст"></textarea>
+                    <input type="number" id="caesar-shift" placeholder="Сдвиг (ключ)" value="1">
+                    <div class="buttons">
+                        <button id="caesar-encrypt">Зашифровать</button>
+                        <button id="caesar-decrypt">Расшифровать</button>
+                        <button id="caesar-hack">Брутфорс</button>
+                    </div>
+                    <h3>Результат:</h3>
+                    <div id="caesar-output" class="output-area"></div>
+                </div>
+                <div class="side-image">
+                    <img src="images/caesar-dog.jpg" alt="Новогодняя собачка">
+                </div>
+            </div>
+        </div>
+
+        <div id="vigenere" class="tab-content">
+            <div class="lab-container">
+                <div class="controls">
+                    <h2>Шифр Виженера</h2>
+                    <textarea id="vigenere-input" placeholder="Введите НА РУССКОМ текст"></textarea>
+                    <input type="text" id="vigenere-key" placeholder="Ключевое слово на русском">
+                    <div class="buttons">
+                        <button id="vigenere-encrypt">Зашифровать</button>
+                        <button id="vigenere-decrypt">Расшифровать</button>
+                    </div>
+                    <h3>Результат:</h3>
+                    <div id="vigenere-output" class="output-area"></div>
+                </div>
+                <div class="side-image">
+                    <img src="images/vigenere-dog.jpg" alt="Новогодние собачки">
+                </div>
+            </div>
+        </div>
+
+        <div id="lab3" class="tab-content">
+            <div class="lab-container">
+                <div class="controls">
+                    <h2>ГОСТ 28147-89</h2>
+
+                    <textarea id="gost-input" placeholder="Введите текст (уже можно и не на русском)"></textarea>
+                    <input type="text" id="gost-key" placeholder="Ключ (ровно 32 символа)" maxlength="32">
+
+                    <div class="buttons">
+                        <button id="gost-encrypt">Зашифровать</button>
+                        <button id="gost-decrypt">Расшифровать</button>
+                    </div>
+                    <h3>Результат HEX:</h3>
+                    <div id="gost-output" class="output-area" style="font-family: monospace;"></div>
+                </div>
+                <div class="side-image">
+                    <img src="images/gost-dog.jpg" alt="Много собачек не бывает">
+                </div>
+            </div>
+        </div>
+
+        <div id="lab4" class="tab-content">
+            <div class="lab-container">
+                <div class="controls">
+                    <h2>RSA</h2>
+
+                    <textarea id="rsa-input" placeholder="Введите текст (уже снова можно не на русском)"></textarea>
+                    <input type="number" id="rsa-p" placeholder="p (должно быть целым простым числом)">
+                    <input type="number" id="rsa-q" placeholder="q (должно быть целым простым числом)">
+                    <input type="number" id="rsa-e" placeholder="e (должно быть взаимно простым с фи(n))">
+
+                    <div class="buttons">
+                        <button id="rsa-encrypt">Зашифровать</button>
+                        <button id="rsa-decrypt">Расшифровать</button>
+                    </div>
+                    <h3>Результат HEX:</h3>
+                    <div id="rsa-output" class="output-area" style="font-family: monospace;"></div>
+                </div>
+                <div class="side-image">
+                    <img src="images/rsa-dog.jpg" alt="Еще новогодняя собачка">
+                </div>
+            </div>
+        </div>
+
+        <div id="lab5" class="tab-content active">
+            <div class="lab-container">
+                <div class="controls">
+                    <h2>ГОСТ Потоковый</h2>
+
+                    <textarea id="gost-stream-input" placeholder="Введите текст (опят можно не на русском)"></textarea>
+                    <input type="text" id="gost-stream-key" placeholder="Ключ (ровно 32 символа)" maxlength="32">
+                    <input type="text" id="gost-stream-nonce" placeholder="Nonce (IV) (ровно 16 символов)" maxlength="16">
+
+                    <div class="buttons">
+                        <button id="gost-stream-encrypt">Зашифровать</button>
+                        <button id="gost-stream-decrypt">Расшифровать</button>
+                    </div>
+                    <h3>Результат:</h3>
+                    <div id="gost-stream-output" class="output-area" style="font-family: monospace;"></div>
+                </div>
+                <div class="side-image">
+                    <img src="images/stream-dog.jpg" alt="Последняя новогодняя собачка">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
